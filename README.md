@@ -8,7 +8,16 @@ Read more about it in [the wiki](https://github.com/ztellman/gloss/wiki).
 
 ## note
 
-This is a fork w/ minor updates to eliminate reflection-related errors on newer JVM, update dependencies, and conversion to deps.edn.
+This is a fork w/ minor type-hinting updates, updated dependencies, and conversion to deps.edn.
+
+## usage
+
+To add as a dependency to your `deps.edn`:
+
+```clj
+{:deps
+ {io.github.casselc/gloss {:git/tag "0.0.0-SNAPSHOT" :git/sha "37a9f46"}}}
+```
 
 ## documentation
 
