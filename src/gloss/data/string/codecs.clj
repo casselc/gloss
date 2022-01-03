@@ -22,6 +22,8 @@
      CharsetDecoder
      CharsetEncoder]))
 
+(set! *warn-on-reflection* true)
+
 (defn take-string-from-buf-seq [^CharsetDecoder decoder, buf-seq]
   (let [buf-seq (dup-bytes buf-seq)
 	char-buf (create-char-buf decoder buf-seq)]

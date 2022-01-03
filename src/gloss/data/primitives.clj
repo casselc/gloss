@@ -17,6 +17,8 @@
      ByteBuffer
      ByteOrder]))
 
+(set! *warn-on-reflection* true)
+
 (defn has-bytes [n buf-seq]
   (< (.remaining ^Buffer (first buf-seq)) n))
 

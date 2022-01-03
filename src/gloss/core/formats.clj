@@ -18,6 +18,8 @@
      ByteBuffer
      CharBuffer]))
 
+(set! *warn-on-reflection* true)
+
 (def byte-array-class (class (byte-array [])))
 
 (defn to-buf-seq

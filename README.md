@@ -1,8 +1,14 @@
+# gloss [![Clojure CI](https://github.com/casselc/gloss/actions/workflows/test.yml/badge.svg)](https://github.com/casselc/gloss/actions/workflows/test.yml)
+
 Gloss is a byte-format DSL.It can turn complicated byte formats into Clojure data structures, allowing
 for easy use of custom network protocols and C libraries.  It can also turn Clojure data structures into
 compact byte representations, allowing for efficient use of bandwidth and disk.
 
 Read more about it in [the wiki](https://github.com/ztellman/gloss/wiki).
+
+## note
+
+Fork w/ minor updates to eliminate reflection-related errors on newer JVM and conversion to deps.edn.
 
 ## usage
 
