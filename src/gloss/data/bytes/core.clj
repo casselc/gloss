@@ -233,7 +233,7 @@
       nil
 
       (<= n byte-count)
-      (-> buffer duplicate (limit (min byte-count n)) slice)))
+      (-> buffer duplicate (.limit (min byte-count n)) slice)))
   (concat-bytes- [_ bufs]
     (create-buf-seq (cons buffer bufs))))
 
