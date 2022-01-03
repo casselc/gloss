@@ -8,15 +8,7 @@ Read more about it in [the wiki](https://github.com/ztellman/gloss/wiki).
 
 ## note
 
-Fork w/ minor updates to eliminate reflection-related errors on newer JVM and conversion to deps.edn.
-
-## usage
-
-To add Gloss as a dependency to your `project.clj`:
-
-```clj
-[gloss "0.2.6"]
-```
+This is a fork w/ minor updates to eliminate reflection-related errors on newer JVM, update dependencies, and conversion to deps.edn.
 
 ## documentation
 
