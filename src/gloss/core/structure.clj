@@ -18,6 +18,8 @@
     [java.nio
      ByteBuffer]))
 
+(set! *warn-on-reflection* true)
+
 ;;;
 
 (defn- sequence-reader

@@ -20,6 +20,8 @@
      SingleBufferSequence
      MultiBufferSequence]))
 
+(set! *warn-on-reflection* true)
+
 (import-fn core/create-buf-seq)
 (import-fn core/duplicate)
 

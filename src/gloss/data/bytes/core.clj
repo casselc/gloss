@@ -24,16 +24,16 @@
   (-> buf .slice (.order (.order buf))))
 
 (defn ^ByteBuffer rewind [^ByteBuffer buf]
-  (.rewind buf))
+  (.rewind ^Buffer buf))
 
 (defn ^ByteBuffer position
   ([^ByteBuffer buf]
-     (.position buf))
+     (.position ^Buffer buf))
   ([^ByteBuffer buf n]
-     (.position buf n)))
+     (.position ^Buffer buf n)))
 
 (defn ^ByteBuffer limit [^ByteBuffer buf n]
-  (.limit buf n))
+  (.limit ^Buffer buf n))
 
 (declare create-buf-seq)
 
@@ -233,7 +233,7 @@
       nil
 
       (<= n byte-count)
-      (-> buffer duplicate (.limit (min byte-count n)) slice)))
+      (-> buffer duplicate (limit (min byte-count n)) slice)))
   (concat-bytes- [_ bufs]
     (create-buf-seq (cons buffer bufs))))
 

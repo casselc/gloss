@@ -19,6 +19,8 @@
      CharsetDecoder
      CharsetEncoder]))
 
+(set! *warn-on-reflection* true)
+
 (defn rewind-chars [buf-seq]
   (concat
     (map #(.rewind ^CharBuffer %) (drop-last buf-seq))
@@ -45,7 +47,7 @@
 
 	    (< remaining (.remaining buf))
 	    (cons
-	      (-> buf .duplicate ^CharBuffer (.position (+ remaining (.position buf))) .slice)
+	      (-> buf .duplicate ^CharBuffer (.position (int (+ remaining (.position buf)))) .slice)
 	      (rest s))
 
 	    :else
@@ -63,14 +65,14 @@
     :else
     (when-let [first-buf ^CharBuffer (first buf-seq)]
       (if (> (.remaining first-buf) n)
-	[(-> first-buf .duplicate ^CharBuffer (.limit (+ (.position first-buf) n)) .slice)]
+	[(-> first-buf .duplicate ^CharBuffer (.limit (int (+ (.position first-buf) n))) .slice)]
 	(when (<= n (byte-count buf-seq))
 	  (loop [remaining n, s buf-seq, accumulator []]
 	    (if (pos? remaining)
 	      (let [buf ^CharBuffer (first s)]
 		(if (>= remaining (.remaining buf))
 		  (recur (- remaining (.remaining buf)) (rest s) (conj accumulator buf))
-		  (conj accumulator (-> buf .duplicate ^CharBuffer (.limit (+ (.position buf) remaining)) .slice))))
+		  (conj accumulator (-> buf .duplicate ^CharBuffer (.limit (int (+ (.position buf) remaining))) .slice))))
 	      accumulator)))))))
 
 

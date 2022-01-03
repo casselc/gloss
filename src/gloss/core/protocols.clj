@@ -15,6 +15,7 @@
     [java.nio Buffer ByteBuffer]
     [gloss.data.bytes.core SingleBufferSequence]))
 
+(set! *warn-on-reflection* true)
 ;;;
 
 (defprotocol+ Reader

@@ -12,6 +12,8 @@
     [gloss.data bytes string primitives]
     [gloss.core protocols structure formats]))
 
+(set! *warn-on-reflection* true)
+
 ;;;
 
 (defn header [codec header->body body->header]

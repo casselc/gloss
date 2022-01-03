@@ -24,6 +24,8 @@
      InputStream
      OutputStream]))
 
+(set! *warn-on-reflection* true)
+
 ;;;
 
 (import-fn formats/to-byte-buffer)

@@ -4,6 +4,10 @@ compact byte representations, allowing for efficient use of bandwidth and disk.
 
 Read more about it in [the wiki](https://github.com/ztellman/gloss/wiki).
 
+## note
+
+Fork w/ minor updates to eliminate reflection-related errors on newer JVM and conversion to deps.edn.
+
 ## usage
 
 To add Gloss as a dependency to your `project.clj`:

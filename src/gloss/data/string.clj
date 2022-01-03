@@ -14,6 +14,8 @@
     [gloss.data.string.core :as core]
     [gloss.data.string.codecs :as codecs]))
 
+(set! *warn-on-reflection* true)
+
 (import-fn core/take-chars)
 (import-fn core/drop-chars)
 (import-fn core/rewind-chars)

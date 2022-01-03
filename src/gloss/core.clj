@@ -20,6 +20,8 @@
     [gloss.core.codecs :as codecs]
     [gloss.core.structure :as structure]))
 
+(set! *warn-on-reflection* true)
+
 ;;;
 
 (import-fn structure/compile-frame)

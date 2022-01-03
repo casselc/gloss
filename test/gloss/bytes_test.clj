@@ -6,13 +6,15 @@
 ;;   the terms of this license.
 ;;   You must not remove this notice, or any other, from this software.
 
-(ns gloss.test.bytes
+(ns gloss.bytes-test
   (:use
     [gloss.data bytes]
     [gloss.data.bytes.delimited :only (delimited-bytes-splitter)]
     [gloss.core formats])
   (:use [clojure test])
   (:import [java.nio ByteBuffer]))
+
+(set! *warn-on-reflection* true)
 
 (defn byte-seq [^ByteBuffer buf]
   (let [buf (duplicate buf)]

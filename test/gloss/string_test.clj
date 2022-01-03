@@ -6,11 +6,13 @@
 ;;   the terms of this license.
 ;;   You must not remove this notice, or any other, from this software.
 
-(ns gloss.test.string
+(ns gloss.string-test
   (:use
     [gloss.data bytes string]
     [gloss.core protocols formats]
     [clojure test]))
+
+(set! *warn-on-reflection* true)
 
 (defn split-bytes [interval bytes]
   (let [buf-seq (to-buf-seq bytes)]
@@ -21,7 +23,7 @@
 	  (range (byte-count buf-seq)))))))
 
 (def pilcrow-string (apply str (repeat 30 "¶")))
-(def pilcrows (.getBytes pilcrow-string "utf-8"))
+(def pilcrows (.getBytes ^String pilcrow-string "utf-8"))
 
 (defn segments [interval]
   (split-bytes interval pilcrows))
