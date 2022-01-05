@@ -28,7 +28,6 @@ jobs:
           key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}-{{ checksum ".circleci/config.yml" }}
       - run: clojure -P -M:test
       - run: clojure -P -M:build
-      - run: clojure -X:deps prep
       - save_cache:
           paths:
             - ~/.clojure
