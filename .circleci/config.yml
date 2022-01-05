@@ -24,13 +24,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: gloss-{{ checksum "deps.edn" }}
+          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}
       - run: clojure -P -M:build:test
       - save_cache:
           paths:
             - ~/.m2
             - ~/.gitlibs
-          key: gloss-{{ checksum "deps.edn" }}
+          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}
       - run: clojure -T:build ci
 
 workflows:
