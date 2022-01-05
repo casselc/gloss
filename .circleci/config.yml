@@ -1,16 +1,16 @@
 version: 2.1
 
 executors:
-  jdk8:
+  openjdk-8:
     docker:
       - image: circleci/clojure:openjdk-8-tools-deps-bullseye-node-browsers-legacy
-  jdk11:
+  openjdk-11:
     docker:
       - image: circleci/clojure:openjdk-11-tools-deps-bullseye-node-browsers-legacy
-  jdk17:
+  openjdk-17:
     docker:
       - image: circleci/clojure:openjdk-17-tools-deps-bullseye-node-browsers-legacy
-  jdk18:
+  openjdk-18:
     docker:
       - image: circleci/clojure:openjdk-18-tools-deps-bullseye-node-browsers-legacy
 
