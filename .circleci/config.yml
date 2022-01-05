@@ -26,7 +26,8 @@ jobs:
       - checkout
       - restore_cache:
           key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}
-      - run: clojure -P -M:build:test
+      - run: clojure -P -M:test
+      - run: clojure -P -M:build
       - save_cache:
           paths:
             - ~/.clojure
