@@ -3,7 +3,7 @@
   (:require [clojure.tools.build.api :as b] ; for b/git-count-revs
             [org.corfield.build :as bb]))
 
-(def lib 'dev.chucklehead/gloss)
+(def lib 'gloss/gloss)
 ; alternatively, use MAJOR.MINOR.COMMITS:
 (def version (format "0.2.%s" (b/git-count-revs nil)))
 
