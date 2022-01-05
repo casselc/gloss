@@ -25,16 +25,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}
+          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}-{{ checksum ".circleci/config.yml" }}
       - run: clojure -P -M:test
       - run: clojure -P -M:build
+      - run: clojure -X:deps prep
       - save_cache:
           paths:
             - ~/.clojure
             - ~/.cpcache
             - ~/.m2
             - ~/.gitlibs
-          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}
+          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}-{{ checksum ".circleci/config.yml" }}
       - run: clojure -T:build ci
 
 workflows:
