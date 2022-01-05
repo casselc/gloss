@@ -21,6 +21,7 @@ jobs:
       jdk-version:
         type: string
     executor: << parameters.jdk-version >>
+    working_directory: ~/gloss
     steps:
       - checkout
       - restore_cache:
@@ -28,6 +29,8 @@ jobs:
       - run: clojure -P -M:build:test
       - save_cache:
           paths:
+            - ~/.clojure
+            - ~/.cpcache
             - ~/.m2
             - ~/.gitlibs
           key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}
