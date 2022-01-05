@@ -1,0 +1,46 @@
+version: 2.1
+
+executors:
+  openjdk-8:
+    docker:
+      - image: circleci/clojure:openjdk-8-tools-deps-bullseye-node-browsers-legacy
+  openjdk-11:
+    docker:
+      - image: circleci/clojure:openjdk-11-tools-deps-bullseye-node-browsers-legacy
+  openjdk-17:
+    docker:
+      - image: circleci/clojure:openjdk-17-tools-deps-bullseye-node-browsers-legacy
+  openjdk-18:
+    docker:
+      - image: circleci/clojure:openjdk-18-tools-deps-bullseye-node-browsers-legacy
+
+
+jobs:
+  build:
+    parameters:
+      jdk-version:
+        type: string
+    executor: << parameters.jdk-version >>
+    working_directory: ~/gloss
+    steps:
+      - checkout
+      - restore_cache:
+          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}-{{ checksum ".circleci/config.yml" }}
+      - run: clojure -P -M:test
+      - run: clojure -P -M:build
+      - save_cache:
+          paths:
+            - ~/.clojure
+            - ~/.cpcache
+            - ~/.m2
+            - ~/.gitlibs
+          key: gloss-<< parameters.jdk-version >>-{{ checksum "deps.edn" }}-{{ checksum ".circleci/config.yml" }}
+      - run: clojure -T:build ci
+
+workflows:
+  build-all:
+    jobs:
+      - build:
+          matrix:
+            parameters:
+              jdk-version: ["openjdk-8", "openjdk-11", "openjdk-17", "openjdk-18"]
